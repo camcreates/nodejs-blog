@@ -5,19 +5,24 @@ function getDate(post) {
   var date = new Date(post.data.date);
   if (date) {
     var suffix = '';
-    switch (date.getUTCDate().toString().substr(date.getUTCDate().toString().length - 1)) {
-    case '1':
-      suffix = 'st';
-      break;
-    case '2':
-      suffix = 'nd';
-      break;
-    case '3':
-      suffix = 'rd';
-      break;
-    default :
+    if (date > 3 && date < 21) {
       suffix = 'th';
+    } else {
+      switch (date % 10) {
+        case 1:
+          suffix = 'st';
+          break;
+        case 2:
+          suffix = 'nd';
+          break;
+        case 3:
+          suffix = 'rd';
+          break;
+        default :
+          suffix = 'th';
+        }
     }
+    
 
     var formatedDate = month_names_short[date.getUTCMonth()] + ' ' +
             date.getUTCDate() + suffix + ', ' + date.getUTCFullYear();
@@ -54,3 +59,4 @@ module.exports = {
   getDate,
   getFirstParagraph,
 };
+
