@@ -15,9 +15,9 @@ block body
           h2
             a(href=ctx.linkResolver(post))
               != PrismicDOM.RichText.asText(post.data.title) 
-          p.blog-post-meta
-            - var date = UIhelpers.getDate(post)
-            span.created-at !{date}
+          //- p.blog-post-meta
+          //-   - var date = UIhelpers.getDate(post)
+          //-   span.created-at !{date}
           //- display first valid slice text and limit it respecting the end of words.
           - var firstParagraph = UIhelpers.getFirstParagraph(post)
           - var textLimit = 300
